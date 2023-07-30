@@ -1,9 +1,10 @@
+import IProduct from "./product.interface";
 import { Product } from "./product.model";
 
-// export const createBookToDB = async (payload: IBook): Promise<IBook>=> {
-//   const book = await Book.create(payload)
-//   return book
-// }
+export const createProductToDB = async (payload: IProduct): Promise<IProduct>=> {
+  const product = await Product.create(payload)
+  return product
+}
 
 export const getProducts = async ()=> {
   const products = await Product.find({});
@@ -15,12 +16,17 @@ export const getProduct = async (id: string)=> {
   return product;
 }
 
-// export const deleteBook = async (id: string)=> {
-//   const book = await Book.findByIdAndDelete(id);
-//   return book;
-// }
+export const getProductByCategory = async (payload: string)=> {
+  const product = await Product.find({ category: payload });
+  return product;
+}
 
-// export const updateBook = async (id: string, payload:Partial<IBook>)=> {
-//   const book = await Book.findOneAndUpdate({_id: id}, payload, {new:true});
-//   return book;
-// }
+export const deleteProduct = async (id: string)=> {
+  const product = await Product.findByIdAndDelete(id);
+  return product;
+}
+
+export const updateProduct = async (id: string, payload:Partial<IProduct>)=> {
+  const product = await Product.findOneAndUpdate({_id: id}, payload, {new:true});
+  return product;
+}

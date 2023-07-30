@@ -1,17 +1,17 @@
 import { NextFunction, Request, Response } from "express";
-import { getProduct, getProducts } from "./product.service";
+import { createProductToDB, deleteProduct, getProduct, getProductByCategory, getProducts, updateProduct } from "./product.service";
 
-// export const createBook = async (req: Request, res: Response, next: NextFunction)=> {
-//   const data = req.body;
-//   const book =await createBookToDB(data);
-//   res.status(200).json(
-//     {
-//       status: 'success',
-//       data: book
-//     }
-//   )
-//   console.log('book added successful')
-// }
+export const createProduct = async (req: Request, res: Response, next: NextFunction)=> {
+  const data = req.body;
+  const product =await createProductToDB(data);
+  res.status(200).json(
+    {
+      status: 'success',
+      data: product
+    }
+  )
+  console.log('Product added successfully')
+}
 
 export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
   const products = await getProducts();
@@ -36,27 +36,39 @@ export const getSingleProduct = async (req: Request, res: Response, next: NextFu
   console.log('Single product fetched')
 }
 
-// export const deleteSingleBook = async (req: Request, res: Response, next: NextFunction) => {
-//   const id = req.params.id;
-//   const book = await deleteBook(id);
-//   res.status(200).json(
-//     {
-//       status: 'success',
-//       data: book
-//     }
-//   )
-//   console.log('Book deleted')
-// }
+export const getCategoriesProduct = async (req: Request, res: Response, next: NextFunction) => {
+  const { category } = req.params;
+  const product = await getProductByCategory(category);
+  res.status(200).json(
+    {
+      status: 'success',
+      data: product
+    }
+  )
+  console.log('Category product fetched')
+}
 
-// export const updateSingleBook = async (req: Request, res: Response, next: NextFunction) => {
-//   const id = req.params.id;
-//   const updatedData = req.body;
-//   const book = await updateBook(id,updatedData);
-//   res.status(200).json(
-//     {
-//       status: 'success',
-//       data: book
-//     }
-//   )
-//   console.log('Book updated')
-// }
+export const deleteSingleProduct = async (req: Request, res: Response, next: NextFunction) => {
+  const id = req.params.id;
+  const product = await deleteProduct(id);
+  res.status(200).json(
+    {
+      status: 'success',
+      data: product
+    }
+  )
+  console.log('Product deleted')
+}
+
+export const updateSingleProduct = async (req: Request, res: Response, next: NextFunction) => {
+  const id = req.params.id;
+  const updatedData = req.body;
+  const product = await updateProduct(id,updatedData);
+  res.status(200).json(
+    {
+      status: 'success',
+      data: product
+    }
+  )
+  console.log('Product updated')
+}

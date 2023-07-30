@@ -1,3 +1,3 @@
-# Quantum Bute 
+# Quantum Byte 
 
 under construction
