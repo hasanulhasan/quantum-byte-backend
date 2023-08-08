@@ -3,7 +3,6 @@ import IProduct from "./product.interface";
 
 
 export const ProductSchema = new Schema<IProduct>({
-  id: { type: String, required: true },
   name: { type: String, required: true },
   img: { type: String, required: true },
   price: { type: String, required: true },

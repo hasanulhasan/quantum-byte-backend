@@ -28,5 +28,6 @@ export const deleteProduct = async (id: string)=> {
 
 export const updateProduct = async (id: string, payload:Partial<IProduct>)=> {
   const product = await Product.findOneAndUpdate({_id: id}, payload, {new:true});
+  console.log('updated form service', product)
   return product;
 }

@@ -38,14 +38,14 @@ export const getSingleProduct = async (req: Request, res: Response, next: NextFu
 
 export const getCategoriesProduct = async (req: Request, res: Response, next: NextFunction) => {
   const { category } = req.params;
-  const product = await getProductByCategory(category);
+  const products = await getProductByCategory(category);
   res.status(200).json(
     {
       status: 'success',
-      data: product
+      data: products
     }
   )
-  console.log('Category product fetched')
+  console.log(`${products.length} category products fetched`)
 }
 
 export const deleteSingleProduct = async (req: Request, res: Response, next: NextFunction) => {
@@ -70,5 +70,5 @@ export const updateSingleProduct = async (req: Request, res: Response, next: Nex
       data: product
     }
   )
-  console.log('Product updated')
+  // console.log('Product updated', product)
 }

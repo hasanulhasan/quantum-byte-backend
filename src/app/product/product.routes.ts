@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.delete('/:id', deleteSingleProduct)
 router.patch('/:id', updateSingleProduct)
-router.get('/:category', getCategoriesProduct)
 router.get('/:id', getSingleProduct)
+router.get('/category/:category', getCategoriesProduct)
 router.get('/', getAllProducts)
 router.post('/create-product', createProduct)
 
